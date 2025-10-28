@@ -68,6 +68,8 @@ src/
 ```
 
 ## 🎯 Décisions techniques et justifications
+Les points listés ci-dessous n’ont pas été développés volontairement : leur implémentation aurait ajouté une complexité ou un coût de développement disproportionné par rapport aux besoins actuels.
+Ils constituent néanmoins des pistes d’amélioration à envisager si le projet évolue ou gagne en ampleur.
 
 ### 1. **Turbopack avec Next.js 15**
 - **Turbopack** : Bundler ultra-rapide (700x plus rapide que Webpack selon les benchmarks Vercel)
