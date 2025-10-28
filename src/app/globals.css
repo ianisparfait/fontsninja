@@ -17,6 +17,7 @@
     --color-deep-white: var(--deep-white);
     --color-pagination: var(--pagination);
     --color-pagination-muted: var(--pagination-muted);
+    --color-pagination-hover: var(--pagination-hover);
 
     --font-sans: var(--font-sans);
     --color-sidebar-ring: var(--sidebar-ring);
@@ -52,11 +53,12 @@
     --radius: 0.625rem;
     --primary: rgb(238, 88, 90);
     --primary-accent: rgb(220, 81, 83);
-    --muted: oklch(1 0 0);
-    --background: oklch(0.9739 0.0011 17.18);
-    --foreground: oklch(0.1822 0 0);
-    --pagination: oklch(0.6483 0.0073 286.19);
-    --pagination-muted: oklch(0.8803 0.0054 286.29);
+    --muted: rgb(255, 255, 255);
+    --background: rgb(247, 246, 246);
+    --foreground: rgb(18, 18, 18);
+    --pagination: rgb(142, 142, 147);
+    --pagination-muted: rgb(215, 215, 219);
+    --pagination-hover: rgb(18, 18, 18);
 
     --deep-white: oklch(1 0 0);
 
@@ -92,12 +94,13 @@
 .dark {
     --primary: rgb(238, 88, 90);
     --primary-accent: rgb(220, 81, 83);
-    --muted: oklch(0.2939 0.0036 286.18);
-    --background: oklch(0.209 0 0);
-    --foreground: oklch(0.997 0 0);
+    --muted: rgb(44, 44, 46);
+    --background: rgb(24, 24, 24);
+    --foreground: rgb(254, 254, 254);
     --deep-white: oklch(1 0 0);
-    --pagination: oklch(0.5007 0.0047 286.23);
-    --pagination-muted: oklch(0.38 0 0);
+    --pagination: rgb(99, 99, 102);
+    --pagination-muted: rgb(99, 99, 102);
+    --pagination-hover: rgb(254, 254, 254);
 
     --card: oklch(0.205 0 0);
     --card-foreground: oklch(0.985 0 0);

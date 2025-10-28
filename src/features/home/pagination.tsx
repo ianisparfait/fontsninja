@@ -35,12 +35,12 @@ export function Pagination({ currentPage, totalPages }: PaginationProps): ReactN
   }
 
   return (
-    <div className="flex items-center gap-2 mt-8">
+    <div className="flex items-center mt-8">
       <Link
         href={createPageURL(currentPage - 1)}
         className={cn(
-          "transition-opacity px-2 py-4 rounded-xl text-pagination select-none",
-          currentPage === 1 && "pointer-events-none text-pagination-muted",
+          "transition-opacity px-2 py-4 rounded-xl text-pagination select-none hover:text-pagination-hover",
+          currentPage === 1 && "pointer-events-none text-pagination-muted hover:text-pagination-muted",
         )}
         aria-disabled={currentPage === 1}
         tabIndex={currentPage === 1 ? -1 : undefined}
@@ -53,8 +53,8 @@ export function Pagination({ currentPage, totalPages }: PaginationProps): ReactN
           key={page}
           href={createPageURL(page)}
           className={cn(
-            "transition-colors rounded-2xl flex justify-center items-center cursor-pointer text-pagination pt-[18px] pb-[19px] px-2 size-10 select-none",
-            currentPage === page && "bg-primary text-deep-white pointer-events-none",
+            "transition-colors font-medium rounded-2xl flex justify-center items-center cursor-pointer text-pagination pt-[18px] pb-[19px] px-2 size-10 select-none hover:text-pagination-hover",
+            currentPage === page && "bg-primary text-deep-white pointer-events-none hover:text-deep-white",
           )}
         >
           {page}
@@ -64,8 +64,8 @@ export function Pagination({ currentPage, totalPages }: PaginationProps): ReactN
       <Link
         href={createPageURL(currentPage + 1)}
         className={cn(
-          "transition-opacity px-2 py-4 rounded-xl text-pagination select-none",
-          currentPage === totalPages && "pointer-events-none text-pagination-muted",
+          "transition-opacity px-2 py-4 rounded-xl text-pagination select-none hover:text-pagination-hover",
+          currentPage === totalPages && "pointer-events-none text-pagination-muted hover:text-pagination-muted",
         )}
         aria-disabled={currentPage === totalPages}
         tabIndex={currentPage === totalPages ? -1 : undefined}
