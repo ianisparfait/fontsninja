@@ -223,14 +223,13 @@ Ils constituent néanmoins des pistes d’amélioration à envisager si le proje
         test-e2e  → Playwright (upload artifacts si échec)
         build     → Next.js build + upload .next/
       ```
+      **Temps d'exécution** : ~3-4 min total (jobs parallèles)
 
 ### Accessibilité
 11. **Améliorations A11y**
     - **Focus management** : Gestion du focus clavier (roving tabindex)
     - **Screen readers** : ARIA labels enrichis, live regions
     - **Tests automatisés** : axe-core en CI
-
-**Temps d'exécution** : ~3-4 min total (jobs parallèles)
 
 ## 🛠️ Choix techniques détaillés
 
