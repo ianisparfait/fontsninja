@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Navigation", () => {
+test.describe("Navigation", (): void => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("should navigate to font detail page when clicking a card", async ({ page }) => {
+  test("should navigate to font detail page when clicking a card", async ({ page }): Promise<void> => {
     // Wait for font cards to load
     await page.waitForSelector("a[href*='/font/']");
 
@@ -20,10 +20,10 @@ test.describe("Navigation", () => {
     await page.waitForLoadState("networkidle");
 
     // Verify we're on the detail page
-    expect(page.url()).toContain(href!);
+    expect(page.url()).toContain(href);
   });
 
-  test("should navigate back to home when clicking logo", async ({ page }) => {
+  test("should navigate back to home when clicking logo", async ({ page }): Promise<void> => {
     // Navigate to a font detail page first
     await page.waitForSelector("a[href*='/font/']");
     const firstCard = page.locator("a[href*='/font/']").first();
@@ -39,7 +39,7 @@ test.describe("Navigation", () => {
     expect(page.url()).toBe("http://localhost:3000/");
   });
 
-  test("should handle pagination navigation", async ({ page }) => {
+  test("should handle pagination navigation", async ({ page }): Promise<void> => {
     // Check for next button
     const nextButton = page.getByRole("button", { name: /next/i });
 
@@ -60,7 +60,7 @@ test.describe("Navigation", () => {
     }
   });
 
-  test("should maintain scroll position when navigating", async ({ page }) => {
+  test("should maintain scroll position when navigating", async ({ page }): Promise<void> => {
     // Scroll down a bit
     await page.evaluate(() => window.scrollTo(0, 500));
 
@@ -83,7 +83,7 @@ test.describe("Navigation", () => {
     expect(page.url()).toBe("http://localhost:3000/");
   });
 
-  test("should support browser back/forward navigation", async ({ page }) => {
+  test("should support browser back/forward navigation", async ({ page }): Promise<void> => {
     // Navigate to a detail page
     await page.waitForSelector("a[href*='/font/']");
     const firstCard = page.locator("a[href*='/font/']").first();
@@ -99,10 +99,10 @@ test.describe("Navigation", () => {
     // Go forward
     await page.goForward();
     await page.waitForLoadState("networkidle");
-    expect(page.url()).toContain(href!);
+    expect(page.url()).toContain(href);
   });
 
-  test("should have working links in header", async ({ page }) => {
+  test("should have working links in header", async ({ page }): Promise<void> => {
     const logoLink = page.locator('a[href="/"]').first();
 
     // Verify link is clickable
@@ -114,7 +114,7 @@ test.describe("Navigation", () => {
     expect(href).toBe("/");
   });
 
-  test("should handle 404 pages gracefully", async ({ page }) => {
+  test("should handle 404 pages gracefully", async ({ page }): Promise<void> => {
     // Navigate to a non-existent page
     const response = await page.goto("/font/non-existent-font-12345");
 

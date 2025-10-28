@@ -1,35 +1,35 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Theme Switching", () => {
+test.describe("Theme Switching", (): void => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("should toggle between light and dark themes", async ({ page }) => {
+  test("should toggle between light and dark themes", async ({ page }): Promise<void> => {
     // Wait for the theme toggle button to be visible
     const themeButton = page.getByRole("button", { name: /switch/i });
     await expect(themeButton).toBeVisible();
 
-    // Get initial theme from html element
+    // Get initial theme from an HTML element
     const htmlElement = page.locator("html");
     const initialTheme = await htmlElement.getAttribute("class");
 
     // Click the theme toggle
     await themeButton.click();
 
-    // Wait a bit for theme to change
+    // Wait a bit for the theme to change
     await page.waitForTimeout(300);
 
-    // Check that theme has changed
+    // Check that the theme has changed
     const newTheme = await htmlElement.getAttribute("class");
     expect(newTheme).not.toBe(initialTheme);
   });
 
-  test("should persist theme preference after page reload", async ({ page }) => {
+  test("should persist theme preference after page reload", async ({ page }): Promise<void> => {
     const themeButton = page.getByRole("button", { name: /switch/i });
     await themeButton.click();
 
-    // Wait for theme to apply
+    // Wait for the theme to apply
     await page.waitForTimeout(300);
 
     const htmlElement = page.locator("html");
@@ -46,7 +46,7 @@ test.describe("Theme Switching", () => {
     expect(themeAfterReload).toBe(themeAfterClick);
   });
 
-  test("should have correct aria-label on theme toggle", async ({ page }) => {
+  test("should have correct aria-label on theme toggle", async ({ page }): Promise<void> => {
     const themeButton = page.getByRole("button", { name: /switch/i });
 
     // Check that aria-label exists and contains theme information
@@ -55,14 +55,14 @@ test.describe("Theme Switching", () => {
     expect(ariaLabel).toBeTruthy();
   });
 
-  test("should apply theme to all elements", async ({ page }) => {
+  test("should apply theme to all elements", async ({ page }): Promise<void> => {
     const themeButton = page.getByRole("button", { name: /switch/i });
 
-    // Click to switch to dark theme (or light, depending on default)
+    // Click to switch to the dark theme (or light, depending on default)
     await themeButton.click();
     await page.waitForTimeout(300);
 
-    // Check that body has background color applied
+    // Check that the body has background color applied
     const body = page.locator("body");
     const bodyStyles = await body.evaluate((el) => {
       return window.getComputedStyle(el).backgroundColor;
@@ -72,7 +72,7 @@ test.describe("Theme Switching", () => {
     expect(bodyStyles).not.toBe("rgba(0, 0, 0, 0)"); // Should have a background color
   });
 
-  test("should support keyboard navigation for theme toggle", async ({ page }) => {
+  test("should support keyboard navigation for theme toggle", async ({ page }): Promise<void> => {
     // Tab to the theme toggle button
     await page.keyboard.press("Tab");
 

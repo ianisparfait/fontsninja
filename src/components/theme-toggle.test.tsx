@@ -1,6 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+
 import ThemeToggle from "./theme-toggle";
 
 // Mock next-themes
@@ -11,7 +12,7 @@ vi.mock("next-themes", () => ({
   useTheme: () => mockUseTheme(),
 }));
 
-describe("ThemeToggle", () => {
+describe("ThemeToggle", (): void => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -26,7 +27,7 @@ describe("ThemeToggle", () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it("should render button after mounting", async () => {
+  it("should render button after mounting", async (): Promise<void> => {
     mockUseTheme.mockReturnValue({
       theme: "light",
       setTheme: mockSetTheme,
@@ -39,7 +40,7 @@ describe("ThemeToggle", () => {
     });
   });
 
-  it("should have correct aria-label for light theme", async () => {
+  it("should have correct aria-label for light theme", async (): Promise<void> => {
     mockUseTheme.mockReturnValue({
       theme: "light",
       setTheme: mockSetTheme,
@@ -53,7 +54,7 @@ describe("ThemeToggle", () => {
     });
   });
 
-  it("should have correct aria-label for dark theme", async () => {
+  it("should have correct aria-label for dark theme", async (): Promise<void> => {
     mockUseTheme.mockReturnValue({
       theme: "dark",
       setTheme: mockSetTheme,
@@ -67,7 +68,7 @@ describe("ThemeToggle", () => {
     });
   });
 
-  it("should call setTheme when clicked", async () => {
+  it("should call setTheme when clicked", async (): Promise<void> => {
     const user = userEvent.setup();
     mockUseTheme.mockReturnValue({
       theme: "light",
@@ -86,7 +87,7 @@ describe("ThemeToggle", () => {
     expect(mockSetTheme).toHaveBeenCalledTimes(1);
   });
 
-  it("should display correct button text", async () => {
+  it("should display correct button text", async (): Promise<void> => {
     mockUseTheme.mockReturnValue({
       theme: "light",
       setTheme: mockSetTheme,
@@ -99,7 +100,7 @@ describe("ThemeToggle", () => {
     });
   });
 
-  it("should have proper accessibility attributes", async () => {
+  it("should have proper accessibility attributes", async (): Promise<void> => {
     mockUseTheme.mockReturnValue({
       theme: "light",
       setTheme: mockSetTheme,

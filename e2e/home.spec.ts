@@ -1,11 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Home Page", () => {
+test.describe("Home Page", (): void => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
-  test("should display the header with logo and theme toggle", async ({ page }) => {
+  test("should display the header with logo and theme toggle", async ({ page }): Promise<void> => {
     // Check header is present
     const header = page.locator("header");
     await expect(header).toBeVisible();
@@ -14,12 +14,12 @@ test.describe("Home Page", () => {
     const logo = page.locator('a[href="/"]').first();
     await expect(logo).toBeVisible();
 
-    // Check theme toggle button
+    // Check the theme toggle button
     const themeButton = page.getByRole("button", { name: /switch/i });
     await expect(themeButton).toBeVisible();
   });
 
-  test("should display font cards on the home page", async ({ page }) => {
+  test("should display font cards on the home page", async ({ page }): Promise<void> => {
     // Wait for cards to load
     await page.waitForSelector("a[href*='/font/']");
 
@@ -29,20 +29,21 @@ test.describe("Home Page", () => {
     expect(count).toBeGreaterThan(0);
   });
 
-  test("should display pagination controls", async ({ page }) => {
+  test("should display pagination controls", async ({ page }): Promise<void> => {
     // Check for pagination buttons
     const prevButton = page.getByRole("button", { name: /previous/i });
     const nextButton = page.getByRole("button", { name: /next/i });
 
-    // At least next button should be visible on first page
+    // At least the next button should be visible on the first page
+    await expect(prevButton).toBeVisible();
     await expect(nextButton).toBeVisible();
   });
 
-  test("should have correct page title and metadata", async ({ page }) => {
+  test("should have correct page title and metadata", async ({ page }): Promise<void> => {
     await expect(page).toHaveTitle(/Fonts Ninja/i);
   });
 
-  test("should be responsive", async ({ page }) => {
+  test("should be responsive", async ({ page }): Promise<void> => {
     // Test mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
     await expect(page.locator("header")).toBeVisible();

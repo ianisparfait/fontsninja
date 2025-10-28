@@ -1,7 +1,9 @@
-import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { FontCard } from "./card";
+import { describe, it, vi, expect } from "vitest";
+
 import type { FontFamily } from "@/types/Font";
+
+import { FontCard } from "./card";
 
 // Mock SvgRenderer component
 vi.mock("@/components/svg", () => ({
@@ -14,22 +16,26 @@ vi.mock("@/components/svg", () => ({
 
 describe("FontCard", () => {
   const mockFontFamily: FontFamily = {
-    id: "1",
+    idFont: 1,
+    idFamily: "1",
     name: "Roboto",
     url: "/font/roboto",
     foundry: {
       name: "Google Fonts",
       id: "google",
+      totalFamilies: 12,
     },
     price: {
       formatedPrice: "$29.99",
-      price: 29.99,
+      amount: 29.99,
       currency: "USD",
     },
     totalFonts: 12,
     images: {
       alphabet: {
         svg: "<svg><path d='M0 0' /></svg>",
+        width: 300,
+        height: 300,
       },
     },
   };
@@ -105,7 +111,7 @@ describe("FontCard", () => {
   it("should handle missing price gracefully", () => {
     const fontWithoutPrice: FontFamily = {
       ...mockFontFamily,
-      price: undefined,
+      price: null,
     };
 
     render(<FontCard family={fontWithoutPrice} />);
