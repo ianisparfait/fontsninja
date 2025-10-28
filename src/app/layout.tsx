@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 
 import { type Metadata } from "next";
+import { type NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { Inter } from "next/font/google";
 
 import Header from "@/components/header";
@@ -8,7 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 import "./globals.css";
 
-const inter = Inter({
+const inter: NextFontWithVariable = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
