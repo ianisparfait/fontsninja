@@ -5,12 +5,17 @@ import { type ReactNode, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 export default function ThemeToggle(): ReactNode {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted || !resolvedTheme) return;
+    document.cookie = `theme=${resolvedTheme}; path=/; max-age=31536000`; // 1 an
+  }, [resolvedTheme, mounted]);
 
   if (!mounted) {
     return null;
