@@ -15,8 +15,6 @@ interface FontCardProps {
 }
 
 const Text = ({ text, className }: { text: string; className?: string }): ReactNode => {
-  if (text === "NaN") return null;
-
   return <p className={cn("text-sm font-normal", className)}>{text}</p>;
 };
 
