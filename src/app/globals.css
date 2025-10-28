@@ -10,6 +10,7 @@
     --radius-xl: calc(var(--radius) + 4px);
 
     --color-primary: var(--primary);
+    --color-primary-accent: var(--primary-accent);
     --color-muted: var(--muted);
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -49,7 +50,8 @@
 
 :root {
     --radius: 0.625rem;
-    --primary: oklch(0.6597 0.1853 22.95);
+    --primary: rgb(238, 88, 90);
+    --primary-accent: rgb(220, 81, 83);
     --muted: oklch(1 0 0);
     --background: oklch(0.9739 0.0011 17.18);
     --foreground: oklch(0.1822 0 0);
@@ -88,7 +90,8 @@
 }
 
 .dark {
-    --primary: oklch(0.6597 0.1853 22.95);
+    --primary: rgb(238, 88, 90);
+    --primary-accent: rgb(220, 81, 83);
     --muted: oklch(0.2939 0.0036 286.18);
     --background: oklch(0.209 0 0);
     --foreground: oklch(0.997 0 0);

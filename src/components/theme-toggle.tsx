@@ -26,7 +26,7 @@ export default function ThemeToggle(): ReactNode {
       <button
         onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
         aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-        className="bg-primary text-deep-white rounded-2xl pt-[18px] pb-[19px] px-6 flex items-center justify-center gap-2 font-medium max-h-[49px] cursor-pointer"
+        className="relative inline-flex items-center h-[48px] cursor-pointer transition-colors duration-250 ease-[cubic-bezier(0.165,0.84,0.44,1)] py-4 px-6 text-deep-white bg-primary hover:bg-primary-accent rounded-2xl"
       >
         Switch theme
       </button>
