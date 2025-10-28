@@ -164,27 +164,6 @@ npm run test:e2e:headed  # Navigateur visible (debug)
 - Screenshots + traces en cas d'échec
 - Serveur dev auto-start (pas de setup manuel)
 
-### CI/CD Pipeline (GitHub Actions)
-```yaml
-Jobs:
-  lint      → ESLint + Prettier
-  test-unit → Vitest + Coverage (Codecov)
-  test-e2e  → Playwright (upload artifacts si échec)
-  build     → Next.js build + upload .next/
-```
-
-**Temps d'exécution** : ~3-4 min total (jobs parallèles)
-
-## 📊 Métriques de qualité
-
-- ✅ **Type Coverage** : 100% (strict TypeScript)
-- ✅ **ESLint** : 0 erreurs, 0 warnings
-- ✅ **Test Coverage** : >80% (unit tests)
-- ✅ **E2E Coverage** : Flows critiques couverts
-- ✅ **Bundle Size** : ~150kb JS initial (optimisé par RSC)
-- ✅ **Accessibility** : A11y rules activées (jsx-a11y)
-- ✅ **SEO** : Metadata API Next.js 15
-
 ## 🔄 Axes d'amélioration futurs
 Les points listés ci-dessous n’ont pas été développés volontairement : leur implémentation aurait ajouté une complexité ou un coût de développement disproportionné par rapport aux besoins actuels.
 Ils constituent néanmoins des pistes d’amélioration à envisager si le projet évolue ou gagne en ampleur.
@@ -235,11 +214,23 @@ Ils constituent néanmoins des pistes d’amélioration à envisager si le proje
    - **Pre-push** : Tests + build check
    - **Gain** : Qualité code garantie, CI/CD plus rapide
 
+10. **CI/CD Pipeline (GitHub / GitLab Actions)**
+    - Créer un workflow CI pour exécuter les tests et le build
+    - **Jobs** :
+      ```yaml
+        lint      → ESLint + Prettier
+        test-unit → Vitest + Coverage (Codecov)
+        test-e2e  → Playwright (upload artifacts si échec)
+        build     → Next.js build + upload .next/
+      ```
+
 ### Accessibilité
-10. **Améliorations A11y**
+11. **Améliorations A11y**
     - **Focus management** : Gestion du focus clavier (roving tabindex)
     - **Screen readers** : ARIA labels enrichis, live regions
     - **Tests automatisés** : axe-core en CI
+
+**Temps d'exécution** : ~3-4 min total (jobs parallèles)
 
 ## 🛠️ Choix techniques détaillés
 
