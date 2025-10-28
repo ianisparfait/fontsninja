@@ -9,8 +9,8 @@ import ThemeToggle from "@/components/theme-toggle";
 
 export default function Header(): ReactNode {
   return (
-    <header className="backdrop-blur-[5px] bg-background/70 sticky top-0 left-0 right-0 z-20 justify-center flex">
-      <div className="flex min-h-16 items-center justify-center sm:justify-between gap-4 w-full max-w-5/6 px-12 xl:px-0">
+    <header className="sticky top-0 left-0 right-0 z-20 justify-center flex">
+      <div className="flex min-h-16 items-center justify-center sm:justify-between gap-4 w-full px-[56px]">
         {/* Left side */}
         <div className="flex items-center gap-2">
           <Link href={"/"}>
