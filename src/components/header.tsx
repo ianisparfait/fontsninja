@@ -4,7 +4,7 @@ import { type ReactNode } from "react";
 
 import Link from "next/link";
 
-import SvgRenderer from "@/components/svg";
+import SvgRendererClient from "@/components/svg/SVGRenderer.client";
 import ThemeToggle from "@/components/theme-toggle";
 
 export default function Header(): ReactNode {
@@ -14,7 +14,7 @@ export default function Header(): ReactNode {
         {/* Left side */}
         <div className="flex items-center gap-2">
           <Link href={"/"}>
-            <SvgRenderer
+            <SvgRendererClient
               src="/logo.svg"
               className="[&_path]:fill-foreground data-[theme=dark]:[&_path]:fill-foreground"
             />

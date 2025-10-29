@@ -5,7 +5,7 @@ import { type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
-import SvgRenderer from "@/components/svg";
+import SvgRendererClient from "@/components/svg/SVGRenderer.client";
 
 import { cn } from "@/lib/utils";
 
@@ -45,7 +45,7 @@ export function Pagination({ currentPage, totalPages }: PaginationProps): ReactN
         aria-disabled={currentPage === 1}
         tabIndex={currentPage === 1 ? -1 : undefined}
       >
-        <SvgRenderer src="/arrows/left-arrow.svg" />
+        <SvgRendererClient src="/arrows/left-arrow.svg" />
       </Link>
 
       {pages.map((page) => (
@@ -70,7 +70,7 @@ export function Pagination({ currentPage, totalPages }: PaginationProps): ReactN
         aria-disabled={currentPage === totalPages}
         tabIndex={currentPage === totalPages ? -1 : undefined}
       >
-        <SvgRenderer src="/arrows/right-arrow.svg" />
+        <SvgRendererClient src="/arrows/right-arrow.svg" />
       </Link>
     </div>
   );
